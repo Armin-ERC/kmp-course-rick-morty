@@ -10,7 +10,7 @@ import org.aerc.rickmortyapp.ui.home.HomeScreen
 fun NavigationWrapper() {
     val mainNavController = rememberNavController()
 
-    NavHost(navController = mainNavController, startDestination = "") {
+    NavHost(navController = mainNavController, startDestination = Routes.Home.route) {
         composable(route = Routes.Home.route) {
             HomeScreen()
         }
