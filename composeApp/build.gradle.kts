@@ -6,6 +6,7 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
+    alias { libs.plugins.kotlinxSerialization }
 }
 
 kotlin {
@@ -14,7 +15,7 @@ kotlin {
             jvmTarget.set(JvmTarget.JVM_11)
         }
     }
-    
+
     listOf(
         iosArm64(),
         iosSimulatorArm64()
@@ -24,12 +25,13 @@ kotlin {
             isStatic = true
         }
     }
-    
+
     sourceSets {
         androidMain.dependencies {
             implementation(compose.preview)
             implementation(libs.androidx.activity.compose)
             implementation(libs.koin.android)
+            implementation(libs.ktor.client.okhttp)
         }
         commonMain.dependencies {
             implementation(compose.runtime)
@@ -43,10 +45,19 @@ kotlin {
             implementation(libs.androidx.navigation.compose)
             implementation(libs.compose.material.icons.extended)
 
+            //Ktor
+            implementation(libs.ktor.client.core)
+            implementation(libs.ktor.client.negotiation)
+            implementation(libs.kotlin.serialization)
+
+            //Dependency Injection with Koin
             implementation(project.dependencies.platform(libs.koin.bom))
             implementation(libs.koin.compose)
             implementation(libs.koin.core)
             implementation(libs.koin.compose.viewmodel)
+        }
+        iosMain.dependencies {
+            implementation(libs.ktor.client.darwin)
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
@@ -84,4 +95,3 @@ android {
 dependencies {
     debugImplementation(compose.uiTooling)
 }
-
