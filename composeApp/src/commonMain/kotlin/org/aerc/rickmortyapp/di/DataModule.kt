@@ -7,7 +7,9 @@ import io.ktor.http.ContentType
 import io.ktor.http.URLProtocol
 import io.ktor.serialization.kotlinx.json.json
 import kotlinx.serialization.json.Json
+import org.aerc.rickmortyapp.data.RepositoryImpl
 import org.aerc.rickmortyapp.data.remote.ApiService
+import org.aerc.rickmortyapp.domain.Repository
 import org.koin.core.module.dsl.factoryOf
 import org.koin.dsl.module
 
@@ -17,13 +19,14 @@ val dataModule = module {
             install(ContentNegotiation) {
                 json(json = Json { ignoreUnknownKeys = true }, contentType = ContentType.Any)
             }
-            install(DefaultRequest){
-                url{
+            install(DefaultRequest) {
+                url {
                     protocol = URLProtocol.HTTPS
-                    host = "https://rickandmortyapi.com"
+                    host = "rickandmortyapi.com"
                 }
             }
         }
     }
     factoryOf(::ApiService)
+    factory<Repository> { RepositoryImpl(get()) }
 }
