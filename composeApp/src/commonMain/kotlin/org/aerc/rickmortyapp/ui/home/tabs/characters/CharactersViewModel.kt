@@ -10,9 +10,13 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.aerc.rickmortyapp.domain.GetRandomCharacterUseCase
+import org.aerc.rickmortyapp.domain.Repository
 import org.aerc.rickmortyapp.domain.model.CharacterModel
 
-class CharactersViewModel(val getRandomCharacter: GetRandomCharacterUseCase) : ViewModel() {
+class CharactersViewModel(
+    private val getRandomCharacter: GetRandomCharacterUseCase,
+    private val repository: Repository
+) : ViewModel() {
 
     private val _state = MutableStateFlow<CharactersState>(CharactersState())
     val state: StateFlow<CharactersState> = _state
@@ -23,6 +27,14 @@ class CharactersViewModel(val getRandomCharacter: GetRandomCharacterUseCase) : V
                 getRandomCharacter()
             }
             _state.update { it.copy(characterOfTheDay = result) }
+        }
+    }
+
+    private fun getAllCharacters() {
+        _state.update { state ->
+            state.copy(
+                characters = repository.getAllCharacters()
+            )
         }
     }
 }

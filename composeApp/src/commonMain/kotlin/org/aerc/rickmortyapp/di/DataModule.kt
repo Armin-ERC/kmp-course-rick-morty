@@ -9,6 +9,7 @@ import io.ktor.serialization.kotlinx.json.json
 import kotlinx.serialization.json.Json
 import org.aerc.rickmortyapp.data.RepositoryImpl
 import org.aerc.rickmortyapp.data.remote.ApiService
+import org.aerc.rickmortyapp.data.remote.paging.CharactersPagingSource
 import org.aerc.rickmortyapp.domain.Repository
 import org.koin.core.module.dsl.factoryOf
 import org.koin.dsl.module
@@ -29,4 +30,5 @@ val dataModule = module {
     }
     factoryOf(::ApiService)
     factory<Repository> { RepositoryImpl(get()) }
+    factoryOf(::CharactersPagingSource)
 }

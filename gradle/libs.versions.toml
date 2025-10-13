@@ -17,7 +17,7 @@ kotlin = "2.2.20"
 koin-bom = "4.1.1"
 ktor = "3.3.1"
 coil = "3.3.0"
-coilKtor = "3.0.0-alpha08"
+pagingCompose = "3.3.0-alpha02-0.5.1"
 
 [libraries]
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
@@ -51,6 +51,10 @@ kotlin-serialization = { module = "io.ktor:ktor-serialization-kotlinx-json", ver
 #Coil
 coil-compose = { group = "io.coil-kt.coil3", name = "coil-compose", version.ref = "coil" }
 coil-network-ktor = { group = "io.coil-kt.coil3", name = "coil-network-ktor3", version.ref = "coil" }
+
+#Paging3
+paging-common = { module = "app.cash.paging:paging-common", version.ref = "pagingCompose" }
+paging-compose-common = { module = "app.cash.paging:paging-compose-common", version.ref = "pagingCompose" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
