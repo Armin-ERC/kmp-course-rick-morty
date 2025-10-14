@@ -4,7 +4,6 @@ import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import kotlinx.io.IOException
 import org.aerc.rickmortyapp.data.remote.ApiService
-import org.aerc.rickmortyapp.di.dataModule
 import org.aerc.rickmortyapp.domain.model.CharacterModel
 
 class CharactersPagingSource(private val api: ApiService) : PagingSource<Int, CharacterModel>() {

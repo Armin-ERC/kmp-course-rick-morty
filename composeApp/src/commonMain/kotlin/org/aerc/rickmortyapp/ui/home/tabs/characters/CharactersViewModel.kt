@@ -28,6 +28,7 @@ class CharactersViewModel(
             }
             _state.update { it.copy(characterOfTheDay = result) }
         }
+        getAllCharacters()
     }
 
     private fun getAllCharacters() {

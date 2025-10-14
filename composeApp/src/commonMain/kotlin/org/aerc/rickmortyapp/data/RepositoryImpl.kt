@@ -1,8 +1,8 @@
 package org.aerc.rickmortyapp.data
 
-import app.cash.paging.PagingConfig
-import app.cash.paging.PagingData
-import app.cash.paging.Pager
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import androidx.paging.PagingData
 import kotlinx.coroutines.flow.Flow
 import org.aerc.rickmortyapp.data.remote.ApiService
 import org.aerc.rickmortyapp.data.remote.paging.CharactersPagingSource
