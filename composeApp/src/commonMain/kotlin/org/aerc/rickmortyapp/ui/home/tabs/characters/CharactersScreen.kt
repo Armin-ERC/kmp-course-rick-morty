@@ -94,10 +94,10 @@ fun CharactersGridList(characters: LazyPagingItems<CharacterModel>, state: Chara
                     }
                 }
 
-                if (characters.loadState.refresh is LoadState.Loading) {
+                if (characters.loadState.append is LoadState.Loading) {
                     item(span = { GridItemSpan(2) }) {
                         Box(
-                            modifier = Modifier.fillMaxSize().padding(20.dp),
+                            modifier = Modifier.fillMaxWidth().height(100.dp).padding(20.dp),
                             contentAlignment = Alignment.Center
                         ) {
                             CircularProgressIndicator(Modifier.size(64.dp), color = Color.Blue)
