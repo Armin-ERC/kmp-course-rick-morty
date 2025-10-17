@@ -7,6 +7,7 @@ import io.ktor.client.request.parameter
 import io.ktor.http.parameters
 import org.aerc.rickmortyapp.data.remote.response.CharacterResponse
 import org.aerc.rickmortyapp.data.remote.response.CharactersWrapperResponse
+import org.aerc.rickmortyapp.data.remote.response.EpisodesWrapperResponse
 
 class ApiService(private val client: HttpClient) {
 
@@ -16,6 +17,12 @@ class ApiService(private val client: HttpClient) {
 
     suspend fun getAllCharacters(page: Int): CharactersWrapperResponse {
         return client.get("/api/character/") {
+            parameter("page", page)
+        }.body()
+    }
+
+    suspend fun getAllEpisodes(page: Int): EpisodesWrapperResponse {
+        return client.get("/api/episodes"){
             parameter("page", page)
         }.body()
     }
