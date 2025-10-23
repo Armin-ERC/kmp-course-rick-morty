@@ -22,7 +22,7 @@ class ApiService(private val client: HttpClient) {
     }
 
     suspend fun getAllEpisodes(page: Int): EpisodesWrapperResponse {
-        return client.get("/api/episodes"){
+        return client.get("/api/episode"){
             parameter("page", page)
         }.body()
     }
